@@ -168,10 +168,8 @@ stdenv.mkDerivation (finalAttrs: {
     autoPatchelfHook
     cmake
     ninja
+    perl # for make generate
     gfortran
-  ]
-  ++ lists.optionals rocmSupport [
-    perl # for tools/hipify-perl
   ]
   ++ lists.optionals cudaSupport [
     cudaPackages.cuda_nvcc
@@ -236,10 +234,6 @@ stdenv.mkDerivation (finalAttrs: {
     (strings.cmakeFeature "MIN_ARCH" minArch) # Disarms magma's asserts
   ]
   ++ lists.optionals rocmSupport [
-    # Can be removed once https://github.com/icl-utk-edu/magma/pull/27 is merged
-    # Can't easily apply the PR as a patch because we rely on the tarball with pregenerated
-    # hipified files ∴ fetchpatch of the PR will apply cleanly but fail to build
-    # (strings.cmakeFeature "ROCM_CORE" "${rocmPackages.clr}")
     (strings.cmakeFeature "CMAKE_C_COMPILER" "${rocmPackages.clang}/bin/clang")
     (strings.cmakeFeature "CMAKE_CXX_COMPILER" "${rocmPackages.clang}/bin/clang++")
   ];
