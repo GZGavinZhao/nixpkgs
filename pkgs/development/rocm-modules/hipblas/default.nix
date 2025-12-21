@@ -46,16 +46,6 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-SoszZBbk8sM3yjgahs1UrPCsEbGmTYTpdOw+Ah/z8H8=";
   };
 
-  patches = [
-    (fetchpatch {
-      # Subject: [PATCH] Add gfx1150, gfx1150, gfx1200, gfx1201 support (#1055)
-      # This was merged to release/rocm-rel-6.4 but AMD forgot to tag it for 6.4.3
-      name = "release-6.4-arch-extra.patch";
-      url = "https://github.com/ROCm/hipBLAS/commit/0100b32ccff9a0f12134694315b4e44884e25a8e.patch";
-      hash = "sha256-BmktlLJpYaTcogHzEKpZdCnksIIysEO47WMezXoxvCs=";
-    })
-  ];
-
   postPatch = ''
     substituteInPlace library/CMakeLists.txt \
       --replace-fail "find_package(Git REQUIRED)" ""
