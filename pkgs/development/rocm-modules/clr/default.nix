@@ -269,6 +269,12 @@ stdenv.mkDerivation (finalAttrs: {
       opencl-example = callPackage ./test-opencl-example.nix {
         clr = finalAttrs.finalPackage;
       };
+      generic-arch = callPackage ./test-generic-arch.nix {
+        clr = finalAttrs.finalPackage;
+      };
+      isa-compat = callPackage ./test-isa-compat.nix {
+        clr = finalAttrs.finalPackage;
+      };
     };
 
     selectGpuTargets =
