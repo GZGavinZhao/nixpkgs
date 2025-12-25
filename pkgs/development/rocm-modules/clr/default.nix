@@ -148,15 +148,14 @@ stdenv.mkDerivation (finalAttrs: {
     ./cmake-find-x11-libgl.patch
     (fetchpatch {
       # [PATCH] improve rocclr isa compatibility check
-      sha256 = "sha256-oj1loBEuqzuMihOKoN0wR92Wo25AshN5MpBuTq/9TMw=";
-      url = "https://github.com/GZGavinZhao/clr/commit/f675b9b46d9f7bb8e003f4f47f616fa86a0b7a5e.patch";
+      sha256 = "sha256-/QpB3Wqdhcq6lzyO/zOWzwQC0oYpesCICxnVx5CqbWg=";
+      url = "https://github.com/GZGavinZhao/clr/commit/733ee38ef8ad5c84926970981821f446dfcb00af.patch";
     })
-    # FIXME: update
-    # (fetchpatch {
-    #   # [PATCH] improve hipamd isa compatibility check
-    #   sha256 = "sha256-E3ERoVjUVWCiYHuE1GaVY5jMrAVx3B1cAVHM4/HPuaQ=";
-    #   url = "https://github.com/GZGavinZhao/clr/commit/aec0fc56ee2d10a2bc269c418fa847da2ee9969a.patch";
-    # })
+    (fetchpatch {
+      # [PATCH] improve hipamd isa compatibility check
+      sha256 = "sha256-FvZInw8PqB68ePxAGu45cWT/whD1xmprIA5wZb5OLcE=";
+      url = "https://github.com/GZGavinZhao/clr/commit/1f0b54ee9b0de08f4dc8cd38b6728928b180048a.patch";
+    })
   ];
 
   postPatch = ''

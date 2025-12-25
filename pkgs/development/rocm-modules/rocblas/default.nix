@@ -135,11 +135,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   patches = [
     # FIXME: doesn't apply
-    # (fetchpatch {
-    #   name = "Extend-rocBLAS-HIP-ISA-compatibility.patch";
-    #   url = "https://github.com/GZGavinZhao/rocBLAS/commit/89b75ff9cc731f71f370fad90517395e117b03bb.patch";
-    #   hash = "sha256-W/ohOOyNCcYYLOiQlPzsrTlNtCBdJpKVxO8s+4G7sjo=";
-    # })
+    (fetchpatch {
+      name = "Extend-rocBLAS-HIP-ISA-compatibility.patch";
+      url = "https://github.com/GZGavinZhao/rocm-libraries/commit/2850f22f80f90c9e498f520608a82989a4932ec3.patch";
+      hash = "sha256-SPsdEwGe+r8bQudkChRzBDAgu3tPQWFweZCgzh+4nOE=";
+      stripLen = 2;
+    })
   ];
 
   # Pass $NIX_BUILD_CORES to Tensile
